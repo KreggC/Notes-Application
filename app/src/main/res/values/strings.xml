@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="TODO" user="username">User\'s</string>
+    <string name="newNote" note="note">New Note</string>
+</resources>
