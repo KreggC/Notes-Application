@@ -50,7 +50,7 @@ class NotesDatabase(context: Context) : SQLiteOpenHelper(context, DB_Name, null,
                     //create note through cursor parsing the database
                     val note = Note()
 
-                    //Check values are for dealing with potential errors for a column not existing since getColumnIndex can return the incorrect value
+                    //Check values are for dealing with potential errors for a column not existing since getColumnIndex can return a value that isnt -1
                     val idCheck = cursor.getColumnIndex(ID)
                     if (idCheck == -1) continue
                     note.id = Integer.parseInt(cursor.getString(idCheck))
@@ -89,7 +89,7 @@ class NotesDatabase(context: Context) : SQLiteOpenHelper(context, DB_Name, null,
         contentValues.put(Desc, description)
         contentValues.put(Timestamp, timestamp)
 
-        //null field for autoincrement ID
+        //nullColumnHack for autoincrement ID
         db.insert(Table, null, contentValues)
         db.close()
 
